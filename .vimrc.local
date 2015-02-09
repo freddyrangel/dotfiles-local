@@ -1,0 +1,61 @@
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowmode
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
+set guifont=Monospace:h24
+syntax enable
+set background=dark
+colorscheme solarized
+hi Normal ctermfg=252 ctermbg=none
+
+let NERDTreeShowHidden=1
+map <leader>n :NERDTreeToggle<CR>
+
+:set relativenumber
+
+" Wraps text width for git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" Don't move around in insert mode
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Changed moving panes to something that makes more sense
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Make working with tabs a lot easier
+nnoremap tn  :tabnew<CR>
+nnoremap tc  :tabclose<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+
+ " Make Poweline insert status faster
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
+" For easier pasting from outside vim
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+" Vim rspec setting
+nnoremap <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "!spring rspec {spec}"
