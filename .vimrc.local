@@ -11,8 +11,7 @@ set t_Co=256
 
 set guifont=Monospace:h24
 syntax enable
-set background=dark
-colorscheme solarized
+colorscheme molokai
 hi Normal ctermfg=252 ctermbg=none
 
 let NERDTreeShowHidden=1
@@ -59,3 +58,6 @@ set showmode
 " Vim rspec setting
 nnoremap <Leader>a :call RunAllSpecs()<CR>
 let g:rspec_command = "!spring rspec {spec}"
+
+" Remap emmet leader key
+let g:user_emmet_leader_key='<leader>,'
