@@ -1,6 +1,8 @@
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sfsekaran/cobalt.vim'
+Plug 'loogica/vim_themes'
+Plug 'altercation/vim-colors-solarized'
 "This plug-in provides automatic closing of quotes, parenthesis, brackets, etc
 Plug 'Raimondi/delimitMate'
 Plug 'tomasr/molokai'
@@ -10,3 +12,5 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 " Creates a vim session that persists vim setup
 Plug 'tpope/vim-obsession'
+"Smarter relative number
+Plug 'myusuf3/numbers.vim'

@@ -1,23 +1,23 @@
+" This setups up Powerline Vim. Should probably be removed at some point since
+" this will break on any other machine.
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
-" Always show statusline
-set laststatus=2
 
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowmode
 
+" Always show tab line even if only one tab open
+set showtabline=2
+
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
-
 set guifont=Monospace:h24
 syntax enable
-colorscheme molokai
-hi Normal ctermfg=252 ctermbg=none
+set background=light
+colorscheme solarized
 
+" NerdTree settings
 let NERDTreeShowHidden=1
 map <leader>n :NERDTreeToggle<CR>
-
-:set relativenumber
 
 " Wraps text width for git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
