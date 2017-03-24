@@ -14,3 +14,13 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-obsession'
 "Smarter relative number
 Plug 'myusuf3/numbers.vim'
+" Replace grep with ack
+Plug 'rking/ag.vim'
+" Visually select increasingly larger regions of text using the same key combination 
+Plug 'terryma/vim-expand-region'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'flazz/vim-colorschemes'
+Plug 'lambdatoast/elm.vim'
+Plug 'godlygeek/tabular'
+Plug 'ElmCast/elm-vim'

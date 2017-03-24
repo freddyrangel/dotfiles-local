@@ -1,19 +1,22 @@
-" This setups up Powerline Vim. Should probably be removed at some point since
-" this will break on any other machine.
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
-" Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set noshowmode
-
 " Always show tab line even if only one tab open
 set showtabline=2
 
+" Tab spaces set to 4 for HelloFax/HelloSign repository
+au BufRead,BufNewFile,BufEnter ~/repositories/HelloFax/* setlocal ts=4 sts=4 sw=4
+au BufRead,BufNewFile,BufEnter ~/repositories/hellosign-web/* setlocal ts=4 sts=4 sw=4
+au BufRead,BufNewFile,BufEnter ~/repositories/smartforms/* setlocal ts=4 sts=4 sw=4
+
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
-set guifont=Monospace:h24
+set guifont=Monaco:h24
 syntax enable
 set background=light
 colorscheme solarized
+let g:solarized_termtrans=1
+let g:airline_theme='papercolor'
+let g:airline_powerline_fonts=1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " NerdTree settings
 let NERDTreeShowHidden=1
@@ -40,16 +43,6 @@ nnoremap tc  :tabclose<CR>
 nnoremap tk  :tabnext<CR>
 nnoremap tj  :tabprev<CR>
 
- " Make Poweline insert status faster
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
-
 " For easier pasting from outside vim
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
@@ -61,3 +54,47 @@ let g:rspec_command = "!spring rspec {spec}"
 
 " Remap emmet leader key
 let g:user_emmet_leader_key='<leader>,'
+
+" Type <Space>o to open a new file
+nnoremap <Leader>o :CtrlP<CR>
+
+" Type <Space>w to save file (a lot faster than :w<Enter>)
+nnoremap <Leader>w :w<CR>
+
+" Copy & paste to system clipboard with <Space>p and <Space>y
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" It allows me to:
+" Hit v to select one character
+" Hit vagain to expand selection to word
+" Hit v again to expand to paragraph
+" etc...
+" Hit <C-v> go back to previous selection if I went too far
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" Automatically jump to end of text you pasted
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Prevent replacing paste buffer on paste
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+set clipboard=unnamed
