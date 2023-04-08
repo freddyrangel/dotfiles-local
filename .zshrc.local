@@ -12,10 +12,7 @@ export GOPATH=$HOME/repositories/golang_packages
 
 alias ctags="`brew --prefix`/bin/ctags"
 alias tma="tmux attach -t $1"
-alias assistant="node ~/repositories/assistant/src/index.js $1"
 
-export VISUAL=vim
-export EDITOR="$VISUAL"
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="norm"
 source $ZSH/oh-my-zsh.sh
