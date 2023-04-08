@@ -1,4 +1,15 @@
-" Let's make Vim Pretty
+" =============================================================================
+" Remove some thoughtbot plugins
+" =============================================================================
+UnPlug 'tComment'
+UnPlug 'vim-bundler'
+UnPlug 'vim-rails'
+UnPlug 'vim-rake'
+UnPlug 'vim-ruby'
+
+" =============================================================================
+" Make Vim Pretty
+" =============================================================================
 Plug 'sfsekaran/cobalt.vim'
 Plug 'loogica/vim_themes'
 Plug 'altercation/vim-colors-solarized'
@@ -7,26 +18,73 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 
+" =============================================================================
+" Tmux Airline
+" =============================================================================
+Plug 'edkolev/tmuxline.vim'
+
+" =============================================================================
 " File Navigation
+" =============================================================================
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 
-" This plug-in provides automatic closing of quotes, parenthesis, brackets, etc
+" =============================================================================
+" Auto-close quotes, parenthesis, brackets, etc.
+" =============================================================================
 Plug 'Raimondi/delimitMate'
 
+" =============================================================================
 " Make HTML and JSX easier
+" =============================================================================
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 
-"Smarter relative number
+" =============================================================================
+" Smarter relative number
+" =============================================================================
 Plug 'myusuf3/numbers.vim'
 
+" =============================================================================
 " Replace grep with ack
+" =============================================================================
 Plug 'mileszs/ack.vim'
 
-" Make is easy to line up code
+" =============================================================================
+" Make it easy to line up code
+" =============================================================================
 Plug 'godlygeek/tabular'
 
-" Language stuff
-Plug 'rust-lang/rust.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" =============================================================================
+" Neovim-specific plugins
+" =============================================================================
+if has('nvim')
+  " -------------------------------------------------------------------------
+  " Code Highlighting
+  " -------------------------------------------------------------------------
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+  " -------------------------------------------------------------------------
+  " LSP Support
+  " -------------------------------------------------------------------------
+  Plug 'neovim/nvim-lspconfig'                           " Required
+  Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'} " Optional
+  Plug 'williamboman/mason-lspconfig.nvim'               " Optional
+
+  " -------------------------------------------------------------------------
+  " Autocompletion
+  " -------------------------------------------------------------------------
+  Plug 'hrsh7th/nvim-cmp'     " Required
+  Plug 'hrsh7th/cmp-nvim-lsp' " Required
+  Plug 'L3MON4D3/LuaSnip'     " Required
+
+  " -------------------------------------------------------------------------
+  " LSP Zero
+  " -------------------------------------------------------------------------
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
+
+  " -------------------------------------------------------------------------
+  " GitHub Copilot
+  " -------------------------------------------------------------------------
+  Plug 'github/copilot.vim'
+endif
