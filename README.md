@@ -11,6 +11,7 @@ as possible.
 * NeoVim
 * GitHub Copilot
 * Node.js (for Copilot)
+* Tmuxinator
 
 ## Instructions
 
