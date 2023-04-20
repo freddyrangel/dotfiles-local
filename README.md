@@ -53,6 +53,7 @@ as possible.
 | `J` | Move selected lines down |
 | `K` | Move selected lines up |
 | **Copilot** | |
+| `<Space>c` | Toggle Copilot on/off |
 | `<M-Bslash>` | Suggest completion |
 | `<M-[>` | Previous suggestion |
 | `<M-]>` | Next suggestion |

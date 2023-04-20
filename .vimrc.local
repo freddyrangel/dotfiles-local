@@ -108,8 +108,32 @@ function! FZFKeymaps()
         \ })
 endfunction
 
+" Define a variable to keep track of Copilot status
+let g:copilot_enabled = 1
+
+" Function to toggle Copilot
+function! ToggleCopilot()
+    if g:copilot_enabled
+        " Save the existing completefunc setting
+        let g:copilot_completefunc_save = &completefunc
+
+        " Disable the completefunc for Copilot
+        set completefunc=
+
+        let g:copilot_enabled = 0
+        echo "Copilot disabled"
+    else
+        " Restore the completefunc setting for Copilot
+        let &completefunc = g:copilot_completefunc_save
+
+        let g:copilot_enabled = 1
+        echo "Copilot enabled"
+    endif
+endfunction
+
 command! FZFKeymaps call FZFKeymaps()
 command! CopyKeymaps let @+ = join(ListKeymaps(), "\n")
+nnoremap <leader>c :call ToggleCopilot()<cr>
 
 " =============================================================================
 " Neovim settings
