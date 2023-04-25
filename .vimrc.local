@@ -135,6 +135,12 @@ command! FZFKeymaps call FZFKeymaps()
 command! CopyKeymaps let @+ = join(ListKeymaps(), "\n")
 nnoremap <leader>c :call ToggleCopilot()<cr>
 
+" Rust auto-formatting
+augroup rust_format
+  autocmd!
+  autocmd FileType rust autocmd BufWritePre <buffer> :silent :%!rustfmt
+augroup END
+
 " =============================================================================
 " Neovim settings
 " =============================================================================
